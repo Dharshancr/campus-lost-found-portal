@@ -31,11 +31,6 @@ Every campus has the same recurring, low-tech headache: someone loses a wallet, 
 |---|---|
 | ![New item screenshot](docs/screenshots/new-item.png) | ![My items screenshot](docs/screenshots/my-items.png) |
 
-## 📊 Project Presentation
-
-The complete project presentation is available here:
-
-- 📄 [Campus_Lost_and_Found_Presentation.pptx](docs/Campus_Lost_and_Found_Presentation.pptx)
 
 ## ✨ Features
 
