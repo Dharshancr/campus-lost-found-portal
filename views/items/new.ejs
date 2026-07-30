@@ -1,0 +1,69 @@
+<%- include('../partials/head', { title: 'Post an Item - Campus Lost & Found' }) %>
+<%- include('../partials/navbar') %>
+
+<main class="container pb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card p-4 shadow-sm">
+        <h4 class="mb-3"><i class="bi bi-plus-circle text-primary"></i> Post a Lost or Found Item</h4>
+
+        <% if (error) { %>
+          <div class="alert alert-danger py-2"><%= error %></div>
+        <% } %>
+
+        <form method="POST" action="/items/new" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label class="form-label">I am posting a...</label>
+            <div class="btn-group w-100" role="group">
+              <input type="radio" class="btn-check" name="type" id="typeLost" value="lost" checked>
+              <label class="btn btn-outline-danger" for="typeLost"><i class="bi bi-question-circle"></i> Lost Item</label>
+
+              <input type="radio" class="btn-check" name="type" id="typeFound" value="found">
+              <label class="btn btn-outline-success" for="typeFound"><i class="bi bi-check-circle"></i> Found Item</label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Item Title</label>
+            <input type="text" name="title" class="form-control" placeholder="e.g. Black Wallet, iPhone 13, Blue Backpack" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea name="description" class="form-control" rows="4" placeholder="Include distinguishing details (color, brand, contents, marks etc.)" required></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Category</label>
+              <select name="category" class="form-select" required>
+                <% categories.forEach(cat => { %>
+                  <option value="<%= cat %>"><%= cat %></option>
+                <% }) %>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Date Lost/Found</label>
+              <input type="date" name="event_date" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Location</label>
+            <input type="text" name="location" class="form-control" placeholder="e.g. Main Library, Lecture Hall 3" required>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label">Photo (optional)</label>
+            <input type="file" name="image" class="form-control" accept="image/png,image/jpeg,image/webp">
+            <div class="form-text">JPG, PNG or WEBP, up to 5MB.</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Submit Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

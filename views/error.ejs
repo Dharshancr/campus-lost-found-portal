@@ -1,0 +1,10 @@
+<%- include('partials/head', { title: 'Error - Campus Lost & Found' }) %>
+<%- include('partials/navbar') %>
+
+<main class="container text-center py-5">
+  <i class="bi bi-exclamation-triangle text-danger" style="font-size: 3rem;"></i>
+  <h3 class="mt-3"><%= message %></h3>
+  <a href="/items" class="btn btn-primary mt-3">Back to Browse</a>
+</main>
+
+<%- include('partials/footer') %>

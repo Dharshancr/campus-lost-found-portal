@@ -1,0 +1,88 @@
+<%- include('../partials/head', { title: item.title + ' - Campus Lost & Found' }) %>
+<%- include('../partials/navbar') %>
+
+<main class="container pb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <div class="card shadow-sm">
+        <% if (item.image_path) { %>
+          <img src="<%= item.image_path %>" class="card-img-top" style="max-height: 350px; object-fit: cover;" alt="<%= item.title %>">
+        <% } %>
+        <div class="card-body p-4">
+          <div class="mb-2">
+            <span class="badge <%= item.type === 'lost' ? 'badge-lost' : 'badge-found' %> fs-6">
+              <%= item.type === 'lost' ? 'LOST' : 'FOUND' %>
+            </span>
+            <% if (item.status === 'resolved') { %>
+              <span class="badge bg-secondary fs-6">Resolved</span>
+            <% } %>
+          </div>
+
+          <h3><%= item.title %></h3>
+          <p class="text-muted mb-1"><i class="bi bi-tag"></i> <%= item.category %></p>
+          <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> <%= item.location %></p>
+          <p class="text-muted mb-3"><i class="bi bi-calendar"></i> <%= item.event_date %></p>
+
+          <hr>
+          <h6>Description</h6>
+          <p><%= item.description %></p>
+
+          <hr>
+          <h6>Posted by</h6>
+          <p class="mb-0"><%= item.owner_name %></p>
+
+          <% if (currentUser && currentUser.id === item.user_id) { %>
+            <div class="alert alert-info mt-3 small">
+              You posted this item. Contact info is only revealed to you once someone submits a claim below.
+            </div>
+          <% } %>
+        </div>
+      </div>
+
+      <% if (isOwner) { %>
+        <div class="card shadow-sm mt-4">
+          <div class="card-body">
+            <h6>Manage this post</h6>
+            <div class="d-flex gap-2">
+              <% if (item.status === 'open') { %>
+                <form method="POST" action="/items/<%= item.id %>/resolve">
+                  <button class="btn btn-success btn-sm"><i class="bi bi-check2-circle"></i> Mark as Resolved</button>
+                </form>
+              <% } %>
+              <form method="POST" action="/items/<%= item.id %>/delete" onsubmit="return confirm('Delete this post permanently?');">
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i> Delete Post</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      <% } else { %>
+        <div class="card shadow-sm mt-4">
+          <div class="card-body">
+            <h6><%= item.type === 'lost' ? 'Found this item? Let the owner know.' : 'Is this yours? Submit a claim.' %></h6>
+
+            <% if (!currentUser) { %>
+              <p class="text-muted small">Please <a href="/login">login</a> to submit a claim.</p>
+            <% } else if (item.status === 'resolved') { %>
+              <p class="text-muted small">This item has already been marked resolved.</p>
+            <% } else { %>
+              <form method="POST" action="/items/<%= item.id %>/claim">
+                <div class="mb-2">
+                  <textarea name="message" class="form-control" rows="3" placeholder="Describe how you can identify it, or how you found it..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Submit Claim</button>
+              </form>
+              <p class="text-muted small mt-2">The poster will see your name and contact details once you submit.</p>
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+
+      <div class="mt-4">
+        <a href="/items" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left"></i> Back to Browse</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

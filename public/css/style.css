@@ -1,0 +1,50 @@
+body {
+  background-color: #f5f7fb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.item-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.item-card .card-img-top {
+  height: 180px;
+  object-fit: cover;
+  background: #e9ecef;
+}
+
+.badge-lost {
+  background-color: #dc3545;
+}
+
+.badge-found {
+  background-color: #198754;
+}
+
+.auth-card {
+  max-width: 420px;
+  margin: 60px auto;
+}
+
+.placeholder-icon {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9ecef;
+  color: #adb5bd;
+  font-size: 3rem;
+}
