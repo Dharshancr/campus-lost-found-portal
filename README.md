@@ -102,7 +102,7 @@ Foreign keys are enforced (`PRAGMA foreign_keys = ON`) and the database runs in 
 
 ### Installation
 ```bash
-git clone https://github.com/<your-username>/campus-lost-found-portal.git
+git clone https://github.com/Dharshancr/campus-lost-found-portal.git
 cd campus-lost-found-portal
 npm install
 ```
@@ -148,7 +148,7 @@ This project is licensed under the MIT License.
 
 ## 👤 Author
 
-**Dharshan P**
+**DHARSHAN P**
 Full Stack Developer | B.E. Computer Science & Engineering
 📍 Coimbatore, Tamil Nadu, India
 
@@ -157,5 +157,4 @@ Full Stack Developer | B.E. Computer Science & Engineering
 - Portfolio: https://dharshancr.github.io/Portfolio/
 
 # campus-lost-found-portal
-# campus-lost-found-portal
-# campus-lost-found-portal
+
