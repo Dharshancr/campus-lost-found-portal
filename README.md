@@ -110,7 +110,7 @@ npm install
 ### Environment Variables
 ```
 PORT=3000
-SESSION_SECRET=your-long-random-secret
+SESSION_SECRET= SciPE0vY41K5H+HNfa0Riv6S05YDXdcNtEBCcyW184g=
 ```
 
 ### Run
@@ -158,4 +158,4 @@ Full Stack Developer | B.E. Computer Science & Engineering
 
 # campus-lost-found-portal
 
-# campus-lost-found-portal
+
